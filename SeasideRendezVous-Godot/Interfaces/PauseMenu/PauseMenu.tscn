@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://c37fmnptvpf6f"]
+
+[ext_resource type="Theme" uid="uid://j4s40vrtxmdf" path="res://TextStyles/BigDisplay.tres" id="1_68ykt"]
+[ext_resource type="Script" path="res://Interfaces/PauseMenu/PauseMenu.cs" id="1_tvsvw"]
+
+[node name="PauseMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tvsvw")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.509804)
+
+[node name="Label" type="Label" parent="."]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_68ykt")
+text = "PAUSE"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true

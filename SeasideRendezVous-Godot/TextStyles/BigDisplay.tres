@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://j4s40vrtxmdf"]
+
+[ext_resource type="FontFile" uid="uid://fy4o8b8cthpc" path="res://Fonts/Merich.otf" id="1_np5xc"]
+
+[resource]
+default_font = ExtResource("1_np5xc")
+default_font_size = 147
