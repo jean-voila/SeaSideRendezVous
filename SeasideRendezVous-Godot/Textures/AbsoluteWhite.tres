@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://b4nvjwu15v172"]
+
+[resource]
+shading_mode = 0
+specular_mode = 2
+disable_ambient_light = true
+disable_fog = true

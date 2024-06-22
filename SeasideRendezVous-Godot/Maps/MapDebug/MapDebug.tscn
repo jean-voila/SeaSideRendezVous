@@ -1,13 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://bm0de4q0b34sv"]
+[gd_scene load_steps=12 format=3 uid="uid://bm0de4q0b34sv"]
 
 [ext_resource type="Script" path="res://Maps/MapDebug/MapDebug.cs" id="1_br7b1"]
 [ext_resource type="PackedScene" uid="uid://brewi5v6wpu84" path="res://Objects/StreetLamp/StreetLamp.tscn" id="2_grnt7"]
 [ext_resource type="PackedScene" uid="uid://bsb3joln662tm" path="res://Entities/Player/Player.tscn" id="2_k16rt"]
+[ext_resource type="Material" uid="uid://b4nvjwu15v172" path="res://Textures/AbsoluteWhite.tres" id="2_xcef7"]
 [ext_resource type="AudioStream" uid="uid://l2bsujo4rn6a" path="res://Music/sea_side_rendez_vous.mp3" id="2_y1smw"]
 [ext_resource type="Texture2D" uid="uid://bt7utgx57sq53" path="res://Textures/hangar.jpg" id="4_ugn2c"]
 [ext_resource type="Material" uid="uid://dyhrwrs17jri4" path="res://Maps/MapDebug/MursDebug.tres" id="5_opkan"]
 [ext_resource type="PackedScene" uid="uid://dlumjxeudwqdb" path="res://Objects/Statue/Statue.tscn" id="8_uuapg"]
 [ext_resource type="PackedScene" uid="uid://cdypel7rudyly" path="res://Objects/Bench/Bench.tscn" id="8_xldju"]
+[ext_resource type="PackedScene" uid="uid://bvlqqkn78u4jh" path="res://Objects/Piano/piano.tscn" id="10_voyn5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qrgic"]
 albedo_texture = ExtResource("4_ugn2c")
@@ -18,6 +20,77 @@ uv1_triplanar = true
 [node name="Map Debug" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
 script = ExtResource("1_br7b1")
+
+[node name="WhiteRoom" type="Node3D" parent="."]
+
+[node name="Ground" type="CSGBox3D" parent="WhiteRoom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.9572, 0.385315, -46.9119)
+use_collision = true
+size = Vector3(7.91249, 0.22937, 1.39111)
+material = ExtResource("2_xcef7")
+
+[node name="Ground2" type="CSGBox3D" parent="WhiteRoom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80.3968, 0.381114, -46.7825)
+use_collision = true
+size = Vector3(44.9705, 0.22937, 48.4945)
+material = ExtResource("2_xcef7")
+
+[node name="Roof2" type="CSGBox3D" parent="WhiteRoom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80.3968, 7.9237, -46.7825)
+use_collision = true
+size = Vector3(44.9705, 1.50275, 48.4945)
+material = ExtResource("2_xcef7")
+
+[node name="Roof" type="CSGBox3D" parent="WhiteRoom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.0279, 3.14026, -46.9152)
+use_collision = true
+size = Vector3(8.05378, 0.22937, 1.85181)
+material = ExtResource("2_xcef7")
+
+[node name="Wall1" type="CSGBox3D" parent="WhiteRoom"]
+transform = Transform3D(1, -6.97574e-16, -1.5246e-23, -1.5246e-23, -4.37114e-08, 1, -6.97574e-16, -1, -4.37114e-08, 54.027, 1.65763, -46.105)
+use_collision = true
+size = Vector3(8.05283, 0.22937, 2.77739)
+material = ExtResource("2_xcef7")
+
+[node name="Wall2" type="CSGBox3D" parent="WhiteRoom"]
+transform = Transform3D(1, -6.97574e-16, -1.5246e-23, -1.5246e-23, -4.37114e-08, 1, -6.97574e-16, -1, -4.37114e-08, 54.027, 1.65763, -47.7253)
+use_collision = true
+size = Vector3(8.05283, 0.22937, 2.77739)
+material = ExtResource("2_xcef7")
+
+[node name="Wall3" type="CSGBox3D" parent="WhiteRoom"]
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, -1.5246e-23, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 57.7932, 3.733, -59.4099)
+use_collision = true
+size = Vector3(23.2569, 0.22937, 7.078)
+material = ExtResource("2_xcef7")
+
+[node name="Wall4" type="CSGBox3D" parent="WhiteRoom"]
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, -1.5246e-23, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 57.8614, 3.733, -34.2754)
+use_collision = true
+size = Vector3(23.4741, 0.22937, 7.078)
+material = ExtResource("2_xcef7")
+
+[node name="Wall5" type="CSGBox3D" parent="WhiteRoom"]
+transform = Transform3D(1, -6.97574e-16, -1.5246e-23, -1.5246e-23, -4.37114e-08, 1, -6.97574e-16, -1, -4.37114e-08, 80.3227, 3.733, -22.6241)
+use_collision = true
+size = Vector3(45.1194, 0.22937, 7.078)
+material = ExtResource("2_xcef7")
+
+[node name="Wall6" type="CSGBox3D" parent="WhiteRoom"]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, -1.5246e-23, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 102.769, 3.733, -46.7739)
+use_collision = true
+size = Vector3(48.5439, 0.22937, 7.078)
+material = ExtResource("2_xcef7")
+
+[node name="Wall7" type="CSGBox3D" parent="WhiteRoom"]
+transform = Transform3D(1, -6.97574e-16, -1.5246e-23, -1.5246e-23, -4.37114e-08, 1, -6.97574e-16, -1, -4.37114e-08, 80.2787, 3.733, -70.9544)
+use_collision = true
+size = Vector3(45.1753, 0.22937, 7.078)
+material = ExtResource("2_xcef7")
+
+[node name="Piano" parent="WhiteRoom" instance=ExtResource("10_voyn5")]
+transform = Transform3D(-0.991563, 0, -0.129626, 0, 1, 0, 0.129626, 0, -0.991563, 81.231, 0.569581, -43.8759)
 
 [node name="StreetLamp" parent="." instance=ExtResource("2_grnt7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.5, 2.08165e-12)
@@ -35,7 +108,7 @@ max_distance = 38.89
 bus = &"Music"
 
 [node name="Player" parent="." instance=ExtResource("2_k16rt")]
-transform = Transform3D(-0.576618, 0, -0.817014, 0, 1, 0, 0.817014, 0, -0.576618, -43.713, 0.929284, -43.6189)
+transform = Transform3D(-0.576618, 0, -0.817014, 0, 1, 0, 0.817014, 0, -0.576618, 34.7249, 0.929284, -43.6189)
 
 [node name="Terrain" type="Node3D" parent="."]
 
@@ -62,6 +135,11 @@ transform = Transform3D(-4.37114e-08, 3.48787e-16, 1, 3.48787e-16, 1, -3.48787e-
 use_collision = true
 size = Vector3(98.07, 10.124, 2)
 material = ExtResource("5_opkan")
+
+[node name="Corridor" type="CSGBox3D" parent="Terrain/Muret3"]
+transform = Transform3D(-4.37114e-08, 3.48787e-16, -1, 3.48787e-16, 1, 3.48787e-16, 1, -3.48787e-16, -4.37114e-08, 45.9761, -3.78469, 0.00628662)
+operation = 2
+size = Vector3(2.02102, 2.55231, 1.38904)
 
 [node name="Muret4" type="CSGBox3D" parent="Terrain"]
 transform = Transform3D(-4.37114e-08, 3.48787e-16, 1, 3.48787e-16, 1, -3.48787e-16, -1, 3.48787e-16, -4.37114e-08, -51.028, 5.552, -0.771)
