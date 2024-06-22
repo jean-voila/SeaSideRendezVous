@@ -1,15 +1,83 @@
-[gd_scene load_steps=12 format=3 uid="uid://bm0de4q0b34sv"]
+[gd_scene load_steps=21 format=3 uid="uid://bm0de4q0b34sv"]
 
 [ext_resource type="Script" path="res://Maps/MapDebug/MapDebug.cs" id="1_br7b1"]
 [ext_resource type="PackedScene" uid="uid://brewi5v6wpu84" path="res://Objects/StreetLamp/StreetLamp.tscn" id="2_grnt7"]
 [ext_resource type="PackedScene" uid="uid://bsb3joln662tm" path="res://Entities/Player/Player.tscn" id="2_k16rt"]
 [ext_resource type="Material" uid="uid://b4nvjwu15v172" path="res://Textures/AbsoluteWhite.tres" id="2_xcef7"]
 [ext_resource type="AudioStream" uid="uid://l2bsujo4rn6a" path="res://Music/sea_side_rendez_vous.mp3" id="2_y1smw"]
+[ext_resource type="AudioStream" uid="uid://d1s6l4dqgscx1" path="res://Music/sunlight_sonata.mp3" id="4_l8kwb"]
 [ext_resource type="Texture2D" uid="uid://bt7utgx57sq53" path="res://Textures/hangar.jpg" id="4_ugn2c"]
+[ext_resource type="FontFile" uid="uid://fy4o8b8cthpc" path="res://Fonts/Merich.otf" id="5_7yh45"]
 [ext_resource type="Material" uid="uid://dyhrwrs17jri4" path="res://Maps/MapDebug/MursDebug.tres" id="5_opkan"]
+[ext_resource type="FontFile" uid="uid://c61wn4vpuo638" path="res://Fonts/BebasNeue.ttf" id="6_aql8c"]
+[ext_resource type="PackedScene" uid="uid://d1jdn4axq5o5h" path="res://Objects/Bernie/Bernie.tscn" id="7_oxbe1"]
 [ext_resource type="PackedScene" uid="uid://dlumjxeudwqdb" path="res://Objects/Statue/Statue.tscn" id="8_uuapg"]
 [ext_resource type="PackedScene" uid="uid://cdypel7rudyly" path="res://Objects/Bench/Bench.tscn" id="8_xldju"]
 [ext_resource type="PackedScene" uid="uid://bvlqqkn78u4jh" path="res://Objects/Piano/piano.tscn" id="10_voyn5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kxxb2"]
+size = Vector3(0.494346, 2.60144, 1.77542)
+
+[sub_resource type="Animation" id="Animation_vidp8"]
+resource_name = "fade_in"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Seaside:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rendezvous:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_c7dgw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Seaside:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rendezvous:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7vx31"]
+_data = {
+"RESET": SubResource("Animation_c7dgw"),
+"fade_in": SubResource("Animation_vidp8")
+}
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qrgic"]
 albedo_texture = ExtResource("4_ugn2c")
@@ -17,11 +85,30 @@ metallic = 0.52
 uv1_scale = Vector3(0.1, 0.1, 0.1)
 uv1_triplanar = true
 
-[node name="Map Debug" type="Node3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_ikj8n"]
+size = Vector3(16.5641, 2.95459, 16.8246)
+
+[node name="Map Debug" type="Node3D" node_paths=PackedStringArray("_player", "_corridor", "_sunlightSonata", "_titleText", "_corridorTimer", "_textAnimation", "_cantGoBackWall", "_bernie")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
 script = ExtResource("1_br7b1")
+_player = NodePath("Player")
+_corridor = NodePath("Terrain/Muret3/Corridor")
+_sunlightSonata = NodePath("WhiteRoom/Piano/SunlightSonata")
+_titleText = NodePath("WhiteRoom/TitleText")
+_corridorTimer = NodePath("WhiteRoom/CorridorTimer")
+_textAnimation = NodePath("WhiteRoom/TitleText/TextAnimation")
+_cantGoBackWall = NodePath("WhiteRoom/CantGoBackWall")
+_bernie = NodePath("WhiteRoom/Bernie")
 
 [node name="WhiteRoom" type="Node3D" parent="."]
+
+[node name="CollidorEntry" type="Area3D" parent="WhiteRoom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.9261, 0, -46.8913)
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WhiteRoom/CollidorEntry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.14542, 1.86084, -0.119984)
+shape = SubResource("BoxShape3D_kxxb2")
 
 [node name="Ground" type="CSGBox3D" parent="WhiteRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.9572, 0.385315, -46.9119)
@@ -60,15 +147,27 @@ size = Vector3(8.05283, 0.22937, 2.77739)
 material = ExtResource("2_xcef7")
 
 [node name="Wall3" type="CSGBox3D" parent="WhiteRoom"]
-transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, -1.5246e-23, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 57.7932, 3.733, -59.4099)
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, -1.5246e-23, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 57.7932, 3.733, -59.335)
 use_collision = true
-size = Vector3(23.2569, 0.22937, 7.078)
+size = Vector3(23.4066, 0.22937, 7.078)
+material = ExtResource("2_xcef7")
+
+[node name="CantGoBackWall" type="CSGBox3D" parent="WhiteRoom"]
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, -1.5246e-23, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 57.7932, 1.71887, -46.9589)
+use_collision = true
+size = Vector3(4.91805, 0.22937, 3.04974)
 material = ExtResource("2_xcef7")
 
 [node name="Wall4" type="CSGBox3D" parent="WhiteRoom"]
 transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, -1.5246e-23, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 57.8614, 3.733, -34.2754)
 use_collision = true
 size = Vector3(23.4741, 0.22937, 7.078)
+material = ExtResource("2_xcef7")
+
+[node name="Wall8" type="CSGBox3D" parent="WhiteRoom"]
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, -1.5246e-23, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 57.8614, 6.73233, -46.8033)
+use_collision = true
+size = Vector3(10.2576, 0.22937, 7.078)
 material = ExtResource("2_xcef7")
 
 [node name="Wall5" type="CSGBox3D" parent="WhiteRoom"]
@@ -90,7 +189,70 @@ size = Vector3(45.1753, 0.22937, 7.078)
 material = ExtResource("2_xcef7")
 
 [node name="Piano" parent="WhiteRoom" instance=ExtResource("10_voyn5")]
-transform = Transform3D(-0.991563, 0, -0.129626, 0, 1, 0, 0.129626, 0, -0.991563, 81.231, 0.569581, -43.8759)
+transform = Transform3D(-0.570269, 4.85416e-16, 0.821458, 3.48787e-16, 1, -3.48787e-16, -0.821458, 8.76113e-17, -0.570269, 81.231, 0.569581, -38.6224)
+
+[node name="SunlightSonata" type="AudioStreamPlayer3D" parent="WhiteRoom/Piano"]
+stream = ExtResource("4_l8kwb")
+max_distance = 40.13
+bus = &"Music"
+
+[node name="TitleText" type="Node3D" parent="WhiteRoom"]
+transform = Transform3D(-4.04251e-08, -0.380409, -0.924818, -1.66282e-08, 0.924819, -0.380409, 1, -3.48787e-16, -4.37114e-08, 92.4761, 5.03936, -43.9539)
+
+[node name="Seaside" type="Label3D" parent="WhiteRoom/TitleText"]
+transform = Transform3D(1, -7.71413e-16, 3.55271e-15, -8.92486e-16, 1, -1.36313e-08, -4.50003e-15, 9.31109e-09, 1, 0, 0, 0)
+modulate = Color(0, 0, 0, 0)
+outline_modulate = Color(1, 1, 1, 1)
+text = "SEASIDE"
+font = ExtResource("5_7yh45")
+font_size = 1041
+outline_size = 0
+uppercase = true
+
+[node name="Rendezvous" type="Label3D" parent="WhiteRoom/TitleText"]
+transform = Transform3D(1, -7.71413e-16, 3.55271e-15, -8.92486e-16, 1, -1.36313e-08, -4.50003e-15, 9.31109e-09, 1, 0, -2.25547, 0.92775)
+modulate = Color(0, 0, 0, 0)
+outline_modulate = Color(1, 1, 1, 1)
+text = "RENDEZVOUS"
+font = ExtResource("5_7yh45")
+font_size = 361
+outline_size = 0
+uppercase = true
+
+[node name="By Jeanflix" type="Label3D" parent="WhiteRoom/TitleText"]
+transform = Transform3D(0.751873, 0.250805, 0.609737, -0.250805, 0.964092, -0.0872929, -0.609738, -0.0872928, 0.78778, -10.0688, -2.24615, 1.99859)
+visible = false
+modulate = Color(0, 0, 0, 1)
+outline_modulate = Color(1, 1, 1, 1)
+text = "by JEANFLIX"
+font = ExtResource("6_aql8c")
+font_size = 171
+outline_size = 0
+uppercase = true
+
+[node name="TextAnimation" type="AnimationPlayer" parent="WhiteRoom/TitleText"]
+libraries = {
+"": SubResource("AnimationLibrary_7vx31")
+}
+
+[node name="CorridorTimer" type="Timer" parent="WhiteRoom"]
+wait_time = 6.51
+one_shot = true
+
+[node name="Bernie" parent="WhiteRoom" instance=ExtResource("7_oxbe1")]
+transform = Transform3D(0.21678, 0, 0.97622, 0, 1, 0, -0.97622, 0, 0.21678, 68.2525, 1.09598, -41.9578)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="WhiteRoom/Bernie"]
+transform = Transform3D(0.988622, -0.144002, 0.0434829, 0.0658661, 0.674291, 0.735523, -0.135237, -0.72429, 0.676103, 0.393669, 2.64941, 1.77267)
+light_energy = 5.581
+spot_range = 2.7381
+spot_angle = 43.5938
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="WhiteRoom/Bernie"]
+transform = Transform3D(0.988622, -0.144002, 0.0434829, 0.0658661, 0.674291, 0.735523, -0.135237, -0.72429, 0.676103, 0.219357, 1.41804, 2.35062)
+light_energy = 3.466
+spot_range = 3.50595
+spot_angle = 38.5211
 
 [node name="StreetLamp" parent="." instance=ExtResource("2_grnt7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.5, 2.08165e-12)
@@ -108,7 +270,7 @@ max_distance = 38.89
 bus = &"Music"
 
 [node name="Player" parent="." instance=ExtResource("2_k16rt")]
-transform = Transform3D(-0.576618, 0, -0.817014, 0, 1, 0, 0.817014, 0, -0.576618, 34.7249, 0.929284, -43.6189)
+transform = Transform3D(-0.729088, 0, -0.68442, 0, 1, 0, 0.68442, 0, -0.729088, -42.8737, 0.929284, -43.6189)
 
 [node name="Terrain" type="Node3D" parent="."]
 
@@ -147,13 +309,20 @@ use_collision = true
 size = Vector3(98.289, 10.124, 2)
 material = ExtResource("5_opkan")
 
+[node name="CenterOfMap" type="Area3D" parent="Terrain"]
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Terrain/CenterOfMap"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.16737, 2.03741, -0.0940857)
+shape = SubResource("BoxShape3D_ikj8n")
+
 [node name="SpotLight2" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.974067, -0.162917, 0.15701, 0.0179929, 0.635962, 0.771511, -0.225545, 0.754328, -0.616538, 0, 54.1733, -42.1766)
 light_color = Color(1, 0.929412, 1, 1)
 light_energy = 0.193
 
 [node name="StatueGroup" type="Node3D" parent="."]
-transform = Transform3D(-1, 3.48787e-16, 8.74228e-08, 3.48787e-16, 1, -3.48787e-16, -8.74228e-08, -3.48787e-16, -1, -36.4724, 0.5, 47.2686)
+transform = Transform3D(0.679275, -4.92891e-16, -0.733884, 3.48787e-16, 1, -3.48787e-16, 0.733884, -1.90469e-17, 0.679275, 80.8396, 0.5, -69.0501)
 
 [node name="Statue" parent="StatueGroup" instance=ExtResource("8_uuapg")]
 transform = Transform3D(1, 4.02213e-24, 3.31618e-15, 4.02213e-24, 1, -1.13609e-23, -3.31618e-15, 1.13609e-23, 1, 0, 0, 0)
@@ -164,3 +333,7 @@ light_color = Color(0.999993, 0.825047, 0.818928, 1)
 light_energy = 3.952
 spot_range = 13.0097
 spot_angle = 79.4277
+
+[connection signal="body_entered" from="WhiteRoom/CollidorEntry" to="." method="_CorridorEnteredSignal"]
+[connection signal="timeout" from="WhiteRoom/CorridorTimer" to="." method="_CorridorTimerTimeout"]
+[connection signal="body_entered" from="Terrain/CenterOfMap" to="." method="_CenterOfMapEnteredSignal"]
