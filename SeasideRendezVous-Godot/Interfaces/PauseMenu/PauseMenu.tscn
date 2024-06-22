@@ -1,7 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://c37fmnptvpf6f"]
+[gd_scene load_steps=8 format=3 uid="uid://c37fmnptvpf6f"]
 
 [ext_resource type="Theme" uid="uid://j4s40vrtxmdf" path="res://TextStyles/BigDisplay.tres" id="1_68ykt"]
 [ext_resource type="Script" path="res://Interfaces/PauseMenu/PauseMenu.cs" id="1_tvsvw"]
+[ext_resource type="FontFile" uid="uid://fy4o8b8cthpc" path="res://Fonts/Merich.otf" id="3_w75ig"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wirr4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_owsys"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yaho4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_to54w"]
 
 [node name="PauseMenu" type="Control"]
 process_mode = 3
@@ -23,16 +32,50 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.643137)
 
-[node name="Label" type="Label" parent="."]
-clip_contents = true
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 110
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+clip_contents = true
+layout_mode = 2
 theme = ExtResource("1_68ykt")
 text = "PAUSE"
 horizontal_alignment = 1
 vertical_alignment = 1
 clip_text = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="ResumeButton" type="Button" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.592157, 0.592157, 0.592157, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_w75ig")
+theme_override_font_sizes/font_size = 33
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_wirr4")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_owsys")
+text = "REPRENDRE"
+flat = true
+
+[node name="QuitButton" type="Button" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.593134, 0.593134, 0.593134, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_w75ig")
+theme_override_font_sizes/font_size = 33
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_yaho4")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_to54w")
+text = "QUITTER"
+flat = true
+
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/ResumeButton" to="." method="_ResumeButtonPressedSignal"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/QuitButton" to="." method="_QuitButtonPressedSignal"]

@@ -12,10 +12,22 @@ public partial class PauseMenu : Control
 	{
 		if (Input.IsActionJustPressed("escape"))
 		{
+			PauseToggle();
+		}
+	}
+
+	private void PauseToggle(){
 			_paused = !_paused;
 			Input.MouseMode = _paused ? Input.MouseModeEnum.Visible : Input.MouseModeEnum.Captured;
 			GetTree().Paused = _paused;
 			Visible = _paused;
-		}
+	}
+
+	private void _QuitButtonPressedSignal(){
+		GetTree().Quit();
+	}
+
+	private void _ResumeButtonPressedSignal(){
+		PauseToggle();
 	}
 }
