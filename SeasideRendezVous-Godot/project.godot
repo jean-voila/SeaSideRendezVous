@@ -14,6 +14,8 @@ config/name="Seaside RendezVous"
 run/main_scene="res://Maps/MapDebug/MapDebug.tscn"
 config/features=PackedStringArray("4.2", "C#", "Forward Plus")
 boot_splash/bg_color=Color(0.066755, 0.066755, 0.066755, 1)
+boot_splash/image="res://Images/LoadingScreen.png"
+boot_splash/use_filter=false
 config/icon="res://icon.svg"
 
 [display]
