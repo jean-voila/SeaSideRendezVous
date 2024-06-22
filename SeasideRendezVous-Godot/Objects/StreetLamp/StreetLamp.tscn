@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://brewi5v6wpu84"]
+
+[ext_resource type="ArrayMesh" uid="uid://bqwvktst3p5w6" path="res://Models/StreetLamp/StreetLampMesh.tres" id="2_k4da5"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bmuw1"]
+radius = 0.175304
+height = 8.03524
+
+[node name="StreetLamp" type="RigidBody3D"]
+mass = 100.0
+
+[node name="Lights" type="Node3D" parent="."]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(1, -6.97574e-16, -1.5246e-23, -1.5246e-23, -4.37114e-08, 1, -6.97574e-16, -1, -4.37114e-08, 1.89212, 8.19603, -1.59796)
+light_color = Color(0.811604, 0.173131, 0.275785, 1)
+light_energy = 11.01
+spot_range = 18.1045
+spot_angle = 39.375
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(1, -6.97574e-16, -1.5246e-23, -1.5246e-23, -4.37114e-08, 1, -6.97574e-16, -1, -4.37114e-08, -1.72032, 7.94816, 1.49306)
+light_color = Color(0.996386, 0.902537, 0.902056, 1)
+light_energy = 9.569
+spot_range = 18.104
+spot_angle = 50.9307
+
+[node name="StreetLampMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, -1.39515e-15, -6.09838e-23, 0, -8.74228e-08, 2, -1.39515e-15, -2, -8.74228e-08, -4.98096, -0.943489, -1.49216)
+mesh = ExtResource("2_k4da5")
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 3.956, 2.08165e-12)
+shape = SubResource("CapsuleShape3D_bmuw1")

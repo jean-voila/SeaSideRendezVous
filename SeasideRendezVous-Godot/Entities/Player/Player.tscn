@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bsb3joln662tm"]
+[gd_scene load_steps=6 format=3 uid="uid://bsb3joln662tm"]
 
 [ext_resource type="Script" path="res://Entities/Player/Player.cs" id="1_vvxf0"]
+[ext_resource type="AudioStream" uid="uid://b4e8u50jhmbiq" path="res://SoundEffects/foosteps/FootSteps.tres" id="2_35so3"]
 [ext_resource type="PackedScene" uid="uid://c37fmnptvpf6f" path="res://Interfaces/PauseMenu/PauseMenu.tscn" id="2_fe2hj"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ongep"]
@@ -9,9 +10,18 @@ height = 1.5
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ex7mj"]
 height = 1.5
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("_head")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("_head", "_footstepsSFX")]
 script = ExtResource("1_vvxf0")
 _head = NodePath("Head")
+_footstepsSFX = NodePath("SFX/FootSteps")
+
+[node name="SFX" type="Node3D" parent="."]
+
+[node name="FootSteps" type="AudioStreamPlayer3D" parent="SFX"]
+stream = ExtResource("2_35so3")
+volume_db = -36.717
+pitch_scale = 0.58
+bus = &"SFX"
 
 [node name="PauseMenu" parent="." instance=ExtResource("2_fe2hj")]
 
@@ -31,7 +41,7 @@ current = true
 
 [node name="Lanterne" type="SpotLight3D" parent="Head/Camera"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
-light_energy = 5.822
+light_energy = 3.244
 light_indirect_energy = 3.628
 spot_range = 4.83834
-spot_angle = 56.8609
+spot_angle = 39.7117

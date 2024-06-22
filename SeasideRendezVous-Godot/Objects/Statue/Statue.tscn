@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlumjxeudwqdb"]
+
+[ext_resource type="ArrayMesh" uid="uid://dgdyv4v137fxt" path="res://Models/Statue/StatueMesh.tres" id="1_s153g"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ba6xb"]
+size = Vector3(1.50824, 1.05469, 1)
+
+[node name="Statue" type="RigidBody3D"]
+
+[node name="StatueMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 2.08165e-12, 1.46193, 2.08165e-12)
+mesh = ExtResource("1_s153g")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, -0.0110779, 1.03648, 0)
+shape = SubResource("BoxShape3D_ba6xb")
