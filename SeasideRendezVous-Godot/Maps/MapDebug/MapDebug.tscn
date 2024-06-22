@@ -23,7 +23,7 @@ script = ExtResource("1_br7b1")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.5, 2.08165e-12)
 
 [node name="Bench" parent="." instance=ExtResource("8_xldju")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.71144, 0.500001, -4.80328)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.71144, 0.529567, -4.80328)
 
 [node name="Musique" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.5856, 0)

@@ -1,17 +1,36 @@
-[gd_scene load_steps=3 format=3 uid="uid://cdypel7rudyly"]
+[gd_scene load_steps=5 format=3 uid="uid://cdypel7rudyly"]
 
 [ext_resource type="ArrayMesh" uid="uid://colx33y7j0oua" path="res://Models/Bench/Bench.tres" id="1_hjafc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hih4h"]
-size = Vector3(2.45068, 1.00366, 0.0770874)
+size = Vector3(0.134031, 1.03107, 0.912387)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7dnbq"]
+size = Vector3(2.35719, 0.112335, 0.912387)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3q4pq"]
+size = Vector3(2.41675, 0.780944, 0.0969462)
 
 [node name="Bench" type="RigidBody3D"]
-mass = 0.01
+mass = 30.0
+can_sleep = false
 
 [node name="BenchMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.012, 0, 0, 0, 0.012, 0, 0, 0, 0.012, 2.08165e-12, 2.08165e-12, 2.08165e-12)
 mesh = ExtResource("1_hjafc")
 
 [node name="Collision" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0109863, 0.501831, 0.310924)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.16931, 0.515534, 0.119783)
 shape = SubResource("BoxShape3D_hih4h")
+
+[node name="Collision3" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.16703, 0.523937, 0.097041)
+shape = SubResource("BoxShape3D_hih4h")
+
+[node name="Collision4" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00563791, 0.685645, 0.097041)
+shape = SubResource("BoxShape3D_7dnbq")
+
+[node name="Collision2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.917664, 0.397356, 0, -0.397356, 0.917664, 0.00598064, 1.10455, -0.388549)
+shape = SubResource("BoxShape3D_3q4pq")
