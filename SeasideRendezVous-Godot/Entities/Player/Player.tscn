@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bsb3joln662tm"]
+[gd_scene load_steps=8 format=3 uid="uid://bsb3joln662tm"]
 
 [ext_resource type="Script" path="res://Entities/Player/Player.cs" id="1_vvxf0"]
 [ext_resource type="AudioStream" uid="uid://b4e8u50jhmbiq" path="res://SoundEffects/foosteps/FootSteps.tres" id="2_35so3"]
 [ext_resource type="PackedScene" uid="uid://c37fmnptvpf6f" path="res://Interfaces/PauseMenu/PauseMenu.tscn" id="2_fe2hj"]
+[ext_resource type="PackedScene" uid="uid://cs3athncjndht" path="res://Interfaces/TitleScreen/TitleScreen.tscn" id="4_2pwpg"]
+[ext_resource type="Script" path="res://Interfaces/TitleScreen/TitleScreen.cs" id="5_ajcrl"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ongep"]
 height = 1.5
@@ -10,11 +12,12 @@ height = 1.5
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ex7mj"]
 height = 1.5
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("_head", "_footstepsSFX")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("_head", "_footstepsSFX", "_titleScreen")]
 collision_layer = 2
 script = ExtResource("1_vvxf0")
 _head = NodePath("Head")
 _footstepsSFX = NodePath("SFX/FootSteps")
+_titleScreen = NodePath("TitleScreen")
 
 [node name="SFX" type="Node3D" parent="."]
 
@@ -25,6 +28,10 @@ pitch_scale = 0.58
 bus = &"SFX"
 
 [node name="PauseMenu" parent="." instance=ExtResource("2_fe2hj")]
+
+[node name="TitleScreen" parent="." instance=ExtResource("4_2pwpg")]
+visible = false
+script = ExtResource("5_ajcrl")
 
 [node name="Collision" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_ongep")

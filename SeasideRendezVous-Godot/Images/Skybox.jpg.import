@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfud2lncbjcyy"
-path.s3tc="res://.godot/imported/concrete_layers_02_diff_8k.jpg-203735c823150afd3025b345ead0331e.s3tc.ctex"
+uid="uid://c8amfodisuph8"
+path.s3tc="res://.godot/imported/Skybox.jpg-82f6372c0d154d719252e1780baa134a.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Textures/concrete_layers_02_diff_8k.jpg"
-dest_files=["res://.godot/imported/concrete_layers_02_diff_8k.jpg-203735c823150afd3025b345ead0331e.s3tc.ctex"]
+source_file="res://Images/Skybox.jpg"
+dest_files=["res://.godot/imported/Skybox.jpg-82f6372c0d154d719252e1780baa134a.s3tc.ctex"]
 
 [params]
 

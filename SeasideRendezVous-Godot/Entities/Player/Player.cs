@@ -3,22 +3,32 @@ namespace SeasideRendezvous.Entities.Player;
 
 public partial class Player : CharacterBody3D
 {
+	[Signal] public delegate void LowGravitySignalEventHandler(bool lowGravity);
+	[Signal] public delegate void EndOfGameSignalEventHandler();
 	[Export] private Node3D _head;
 	[Export] private float MouseSensitivity = 0.002f;
 	[Export] private const float Speed = 5.4f;
 	
-	[Export] private float JumpVelocity = 4f;
+	[Export] private const float JumpVelocity = 4f;
 	[Export] private float Acceleration = 10.0f;
 	[Export] private AudioStreamPlayer3D _footstepsSFX;
+
+	[Export] private Control _titleScreen;
 
 	private float _gravity = ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle();
 	private Vector3 _position;
 	
 
 	private float _currentSpeed = Speed;
+	private float _currentJumpVelocity = JumpVelocity;
+
+	private bool _runEnabled = true;
 	public override void _Ready()
 	{
 		Input.MouseMode = Input.MouseModeEnum.Captured;
+		LowGravitySignal+=LowGravity;
+		_titleScreen.Hide();
+		EndOfGameSignal+=_EndOfGame;
 	}
 	
 	
@@ -30,7 +40,7 @@ public partial class Player : CharacterBody3D
 			Velocity = new Vector3(Velocity.X, Velocity.Y - _gravity * (float)delta, Velocity.Z);
 
 		if (Input.IsActionJustPressed("ui_accept") && IsOnFloor())
-			Velocity = new Vector3(Velocity.X, JumpVelocity, Velocity.Z);
+			Velocity = new Vector3(Velocity.X, _currentJumpVelocity, Velocity.Z);
 
 		Vector2 inputDir = Input.GetVector("left", "right", "up", "down");
 		if (inputDir == Vector2.Zero || !IsOnFloor()) {
@@ -61,10 +71,10 @@ public partial class Player : CharacterBody3D
 			_head.RotationDegrees = currentRotation;
 		}
 
-		if (@event.IsActionPressed("caps")){
+		if (@event.IsActionPressed("caps") && _runEnabled){
 			_currentSpeed = Speed * 1.5f;
 		}
-		if (@event.IsActionReleased("caps")){
+		if (@event.IsActionReleased("caps") && _runEnabled){
 			_currentSpeed = Speed;
 		}
 		if (@event.IsActionPressed("centerOfMap")){
@@ -81,5 +91,17 @@ public partial class Player : CharacterBody3D
         newTransform.Origin = newPosition;
         GlobalTransform = newTransform;
     }
+
+	private void LowGravity(bool lowGravity)
+	{
+		_gravity = lowGravity ? 4f : ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle();
+		_currentSpeed = lowGravity ? Speed * 4 : Speed;
+		_currentJumpVelocity = lowGravity ? JumpVelocity*2 : JumpVelocity;
+		_runEnabled = !lowGravity;
+	}
+
+	private void _EndOfGame(){
+		_titleScreen.Show();
+	}
 	
 }

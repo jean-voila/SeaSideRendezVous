@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bm0de4q0b34sv"]
+[gd_scene load_steps=32 format=3 uid="uid://bm0de4q0b34sv"]
 
 [ext_resource type="Script" path="res://Maps/MapDebug/MapDebug.cs" id="1_br7b1"]
 [ext_resource type="Texture2D" uid="uid://biyg4pwgovo87" path="res://Textures/absoluteWhiteGround.png" id="2_74nqr"]
@@ -6,11 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://bsb3joln662tm" path="res://Entities/Player/Player.tscn" id="2_k16rt"]
 [ext_resource type="Material" uid="uid://b4nvjwu15v172" path="res://Textures/AbsoluteWhite.tres" id="2_xcef7"]
 [ext_resource type="AudioStream" uid="uid://l2bsujo4rn6a" path="res://Music/sea_side_rendez_vous.mp3" id="2_y1smw"]
-[ext_resource type="Texture2D" uid="uid://dfud2lncbjcyy" path="res://Textures/concrete_layers_02_diff_8k.jpg" id="3_sbh4u"]
-[ext_resource type="AudioStream" uid="uid://d1s6l4dqgscx1" path="res://Music/sunlight_sonata.mp3" id="4_l8kwb"]
 [ext_resource type="Texture2D" uid="uid://bt7utgx57sq53" path="res://Textures/hangar.jpg" id="4_ugn2c"]
 [ext_resource type="FontFile" uid="uid://fy4o8b8cthpc" path="res://Fonts/Merich.otf" id="5_7yh45"]
 [ext_resource type="Material" uid="uid://dyhrwrs17jri4" path="res://Maps/MapDebug/MursDebug.tres" id="5_opkan"]
+[ext_resource type="AudioStream" uid="uid://b73klmcvg744r" path="res://Music/Piano concerto 2.mp3" id="6_2ojf3"]
 [ext_resource type="FontFile" uid="uid://c61wn4vpuo638" path="res://Fonts/BebasNeue.ttf" id="6_aql8c"]
 [ext_resource type="PackedScene" uid="uid://d1jdn4axq5o5h" path="res://Objects/Bernie/Bernie.tscn" id="7_oxbe1"]
 [ext_resource type="PackedScene" uid="uid://dlumjxeudwqdb" path="res://Objects/Statue/Statue.tscn" id="8_uuapg"]
@@ -33,11 +32,301 @@ uv1_triplanar = true
 shading_mode = 0
 disable_ambient_light = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sdahd"]
-albedo_texture = ExtResource("3_sbh4u")
+[sub_resource type="SphereMesh" id="SphereMesh_84mct"]
+radius = 1.87
+height = 3.74
 
-[sub_resource type="QuadMesh" id="QuadMesh_gfuc5"]
-size = Vector2(5.8, 3.28)
+[sub_resource type="Animation" id="Animation_ap42a"]
+resource_name = "LSDMode"
+length = 19.391
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ground")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array()
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Ceiling")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array()
+tracks/2/type = "rotation_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Wall1")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array()
+tracks/3/type = "rotation_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Wall2")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array()
+tracks/4/type = "rotation_3d"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Wall3")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = PackedFloat32Array()
+tracks/5/type = "rotation_3d"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Wall4")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = PackedFloat32Array()
+tracks/6/type = "rotation_3d"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Wall4")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = PackedFloat32Array()
+tracks/7/type = "rotation_3d"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Wall5")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = PackedFloat32Array()
+tracks/8/type = "rotation_3d"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Wall6")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = PackedFloat32Array()
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Ground:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 18.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(3.48787e-16, 3.02815, 3.48787e-16)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Ceiling:rotation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 18.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(3.48787e-16, -3.3458, 3.48787e-16)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Wall1:rotation")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 18.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-5.37561, 4.59022, 1.29154)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Ground:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 18.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(103.845, 0.009, -46.852), Vector3(228.065, -22.611, -46.852)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Wall3:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 18.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(158.237, 15.9717, -46.8654), Vector3(189.337, 38.632, -47.105)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Wall3:rotation")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 18.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.139626, 0.226893, 0.698132)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Wall2:position")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 18.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(103.845, 16.141, -95.486), Vector3(87.225, 9.251, -119.826)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Wall2:rotation")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0, 18.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.680678, 0.15708, -0.488692)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Ceiling:position")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0, 10.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(103.845, 32.2888, -46.852), Vector3(103.845, 90.0119, -46.852)]
+}
+
+[sub_resource type="Animation" id="Animation_wpjmf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ground:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Ceiling:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Wall1:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Ground:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(103.845, 0.009, -46.852)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Wall3:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(158.237, 15.9717, -46.8654)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Wall3:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Wall2:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(103.845, 16.141, -95.486)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Wall2:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Ceiling:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(103.845, 32.2888, -46.852)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rkmyp"]
+_data = {
+"LSDMode": SubResource("Animation_ap42a"),
+"RESET": SubResource("Animation_wpjmf")
+}
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kxxb2"]
 size = Vector3(0.494346, 2.60144, 1.77542)
@@ -109,22 +398,36 @@ metallic = 0.52
 uv1_scale = Vector3(0.1, 0.1, 0.1)
 uv1_triplanar = true
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_csfms"]
+albedo_color = Color(0, 0, 0, 1)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_ikj8n"]
 size = Vector3(16.5641, 2.95459, 16.8246)
 
-[node name="Map Debug" type="Node3D" node_paths=PackedStringArray("_player", "_corridor", "_sunlightSonata", "_titleText", "_corridorTimer", "_textAnimation", "_cantGoBackWall", "_bernie")]
+[sub_resource type="QuadMesh" id="QuadMesh_gfuc5"]
+size = Vector2(5.8, 3.28)
+
+[node name="Map Debug" type="Node3D" node_paths=PackedStringArray("_player", "_corridor", "_sunlightSonata", "_titleText", "_corridorTimer", "_textAnimation", "_cantGoBackWall", "_bernie", "_terrain", "_lsdModeTimer", "_lsdModeAnimation", "_endOfGameTimer")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
 script = ExtResource("1_br7b1")
 _player = NodePath("Player")
 _corridor = NodePath("Terrain/Muret3/Corridor")
-_sunlightSonata = NodePath("WhiteRoom/Piano/SunlightSonata")
+_sunlightSonata = NodePath("WhiteRoom/Piano/PianoConcerto")
 _titleText = NodePath("WhiteRoom/TitleText")
 _corridorTimer = NodePath("WhiteRoom/CorridorTimer")
 _textAnimation = NodePath("WhiteRoom/TitleText/TextAnimation")
 _cantGoBackWall = NodePath("WhiteRoom/CollidorEntry/CantGoBackWall")
 _bernie = NodePath("WhiteRoom/Bernie")
+_terrain = NodePath("WhiteRoom/Terrain")
+_lsdModeTimer = NodePath("WhiteRoom/LSDModeTimer")
+_lsdModeAnimation = NodePath("WhiteRoom/Terrain/LSDModeAnimation")
+_endOfGameTimer = NodePath("WhiteRoom/EndOfGame")
 
 [node name="WhiteRoom" type="Node3D" parent="."]
+
+[node name="EndOfGame" type="Timer" parent="WhiteRoom"]
+wait_time = 70.3
+one_shot = true
 
 [node name="Terrain" type="Node3D" parent="WhiteRoom"]
 
@@ -137,6 +440,7 @@ material = SubResource("StandardMaterial3D_sumeq")
 [node name="Ceiling" type="CSGBox3D" parent="WhiteRoom/Terrain"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 103.845, 32.2888, -46.852)
 use_collision = true
+collision_layer = 3
 size = Vector3(107.691, 1.0177, 96.6024)
 material = SubResource("StandardMaterial3D_2wr6c")
 
@@ -179,22 +483,20 @@ material = SubResource("StandardMaterial3D_yx1qe")
 [node name="MirrorWall2" type="Node3D" parent="WhiteRoom/Terrain"]
 transform = Transform3D(0.559453, 9.39662e-17, 0.828862, 3.48787e-16, 1, -3.48787e-16, -0.828862, 4.84226e-16, 0.559453, 72.6534, 2.87172, -38.0747)
 
-[node name="Wall" type="CSGBox3D" parent="WhiteRoom/Terrain/MirrorWall2"]
-transform = Transform3D(1, -1.74049e-24, 6.58578e-09, 5.11991e-23, 1, -4.68128e-23, 3.42212e-09, 6.12671e-24, 1, 0, 0, 0)
-use_collision = true
-size = Vector3(7.90039, 4.78418, 1)
-material = SubResource("StandardMaterial3D_sdahd")
-
 [node name="Portal2" type="MeshInstance3D" parent="WhiteRoom/Terrain/MirrorWall2" node_paths=PackedStringArray("exit_portal")]
-transform = Transform3D(-1, 3.48787e-16, 8.74228e-08, 3.48787e-16, 1, -3.48787e-16, -8.74228e-08, -3.48787e-16, -1, -0.07, 2.08165e-12, -0.514)
-mesh = SubResource("QuadMesh_gfuc5")
+transform = Transform3D(-1, 3.48787e-16, 1.09329e-07, 3.48787e-16, 1, -3.48787e-16, -1.09918e-07, -3.48787e-16, -1, -0.0699997, 0, -0.514)
+mesh = SubResource("SphereMesh_84mct")
 skeleton = NodePath("../../../..")
 script = ExtResource("15_8tmv3")
 vertical_viewport_resolution = 1080
-fade_out_distance_max = 20.0
-fade_out_distance_min = 20.0
-fade_out_color = Color(0, 0, 0, 1)
+disable_viewport_distance = 10.0
+exit_scale = 2.0
 exit_portal = NodePath("../../../../Portal1")
+
+[node name="LSDModeAnimation" type="AnimationPlayer" parent="WhiteRoom/Terrain"]
+libraries = {
+"": SubResource("AnimationLibrary_rkmyp")
+}
 
 [node name="CollidorEntry" type="Area3D" parent="WhiteRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.4855, 1.79117, -46.8913)
@@ -212,8 +514,9 @@ material = ExtResource("2_xcef7")
 [node name="Piano" parent="WhiteRoom" instance=ExtResource("10_voyn5")]
 transform = Transform3D(-0.570269, 4.85416e-16, 0.821458, 3.48787e-16, 1, -3.48787e-16, -0.821458, 8.76115e-17, -0.570269, 81.231, 0.569581, -38.6224)
 
-[node name="SunlightSonata" type="AudioStreamPlayer3D" parent="WhiteRoom/Piano"]
-stream = ExtResource("4_l8kwb")
+[node name="PianoConcerto" type="AudioStreamPlayer" parent="WhiteRoom/Piano"]
+process_mode = 3
+stream = ExtResource("6_2ojf3")
 bus = &"Music"
 
 [node name="TitleText" type="Node3D" parent="WhiteRoom"]
@@ -259,6 +562,10 @@ libraries = {
 wait_time = 6.51
 one_shot = true
 
+[node name="LSDModeTimer" type="Timer" parent="WhiteRoom"]
+wait_time = 17.3
+one_shot = true
+
 [node name="Bernie" parent="WhiteRoom" instance=ExtResource("7_oxbe1")]
 transform = Transform3D(0.21678, 0, 0.97622, 0, 1, 0, -0.97622, 0, 0.21678, 68.2525, 1.09598, -41.9578)
 
@@ -277,6 +584,18 @@ spot_angle = 38.5211
 [node name="StreetLamp" parent="." instance=ExtResource("2_grnt7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.5, 2.08165e-12)
 
+[node name="Portal3" type="MeshInstance3D" parent="." node_paths=PackedStringArray("exit_portal")]
+transform = Transform3D(-0.559453, -1.53025e-22, -0.828862, 3.83379e-23, 1, 0, 0.828862, -2.37937e-22, -0.559453, -0.015922, 50.0993, -0.0042901)
+mesh = SubResource("SphereMesh_84mct")
+script = ExtResource("15_8tmv3")
+vertical_viewport_resolution = 1080
+disable_viewport_distance = 10.0
+exit_scale = 2.0
+exit_portal = NodePath("../Portal1")
+
+[node name="StreetLamp2" parent="." instance=ExtResource("2_grnt7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 48.2674, 2.08165e-12)
+
 [node name="Bench" parent="." instance=ExtResource("8_xldju")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.71144, 0.529567, -4.80328)
 
@@ -291,6 +610,7 @@ bus = &"Music"
 
 [node name="Player" parent="." instance=ExtResource("2_k16rt")]
 transform = Transform3D(-0.729088, 0, -0.68442, 0, 1, 0, 0.68442, 0, -0.729088, -42.8737, 0.929284, -43.6189)
+floor_stop_on_slope = false
 
 [node name="Terrain" type="Node3D" parent="."]
 
@@ -299,6 +619,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.60209e-18, 2.60209e-18, 2.6
 use_collision = true
 size = Vector3(100, 1, 100)
 material = SubResource("StandardMaterial3D_qrgic")
+
+[node name="Sol2" type="CSGBox3D" parent="Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.837402, 47.7658, 2.60209e-18)
+use_collision = true
+size = Vector3(101.675, 1, 100)
+material = SubResource("StandardMaterial3D_csfms")
 
 [node name="Muret" type="CSGBox3D" parent="Terrain"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 24.376, 49.09)
@@ -338,7 +664,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.16737, 2.03741, -0.0940857)
 shape = SubResource("BoxShape3D_ikj8n")
 
 [node name="SpotLight2" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.974067, -0.162917, 0.157011, 0.0179929, 0.635962, 0.771511, -0.225545, 0.754328, -0.616538, 0, 50.8434, -42.1766)
+transform = Transform3D(-0.974067, -0.162917, 0.157011, 0.0179929, 0.635962, 0.771511, -0.225545, 0.754328, -0.616538, 0, 42.6123, -42.1766)
 light_color = Color(1, 0.929412, 1, 1)
 light_energy = 0.193
 
@@ -361,6 +687,8 @@ mesh = SubResource("QuadMesh_gfuc5")
 script = ExtResource("15_8tmv3")
 vertical_viewport_resolution = 1080
 
+[connection signal="timeout" from="WhiteRoom/EndOfGame" to="." method="_EndOfGameTimeout"]
 [connection signal="body_exited" from="WhiteRoom/CollidorEntry" to="." method="_CorridorEnteredSignal"]
 [connection signal="timeout" from="WhiteRoom/CorridorTimer" to="." method="_CorridorTimerTimeout"]
+[connection signal="timeout" from="WhiteRoom/LSDModeTimer" to="." method="_LsdModeTimeoutSignal"]
 [connection signal="body_entered" from="Terrain/CenterOfMap" to="." method="_CenterOfMapEnteredSignal"]

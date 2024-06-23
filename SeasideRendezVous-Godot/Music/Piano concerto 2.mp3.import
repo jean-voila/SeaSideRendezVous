@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b73klmcvg744r"
+path="res://.godot/imported/Piano concerto 2.mp3-628ee2801a911aca3ba2a4ce158bcf1a.mp3str"
+
+[deps]
+
+source_file="res://Music/Piano concerto 2.mp3"
+dest_files=["res://.godot/imported/Piano concerto 2.mp3-628ee2801a911aca3ba2a4ce158bcf1a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
