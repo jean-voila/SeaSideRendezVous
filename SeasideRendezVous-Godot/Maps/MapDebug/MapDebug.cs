@@ -38,14 +38,14 @@ public partial class MapDebug : Node3D
 			_corridorEntered = true;
 			_sunlightSonata.Play();
 			_corridorTimer.Start();
+			_cantGoBackWall.Show();
+			_cantGoBackWall.UseCollision = true;
 		}
 	}
 
 	private void _CorridorTimerTimeout(){
 		_titleText.Show();
 		_textAnimation.Play("fade_in");
-		_cantGoBackWall.Show();
-		_cantGoBackWall.UseCollision = true;
 		_bernie.Show();
 	}
 	

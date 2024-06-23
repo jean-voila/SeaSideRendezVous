@@ -1,10 +1,12 @@
-[gd_scene load_steps=23 format=3 uid="uid://bm0de4q0b34sv"]
+[gd_scene load_steps=29 format=3 uid="uid://bm0de4q0b34sv"]
 
 [ext_resource type="Script" path="res://Maps/MapDebug/MapDebug.cs" id="1_br7b1"]
+[ext_resource type="Texture2D" uid="uid://biyg4pwgovo87" path="res://Textures/absoluteWhiteGround.png" id="2_74nqr"]
 [ext_resource type="PackedScene" uid="uid://brewi5v6wpu84" path="res://Objects/StreetLamp/StreetLamp.tscn" id="2_grnt7"]
 [ext_resource type="PackedScene" uid="uid://bsb3joln662tm" path="res://Entities/Player/Player.tscn" id="2_k16rt"]
 [ext_resource type="Material" uid="uid://b4nvjwu15v172" path="res://Textures/AbsoluteWhite.tres" id="2_xcef7"]
 [ext_resource type="AudioStream" uid="uid://l2bsujo4rn6a" path="res://Music/sea_side_rendez_vous.mp3" id="2_y1smw"]
+[ext_resource type="Texture2D" uid="uid://dfud2lncbjcyy" path="res://Textures/concrete_layers_02_diff_8k.jpg" id="3_sbh4u"]
 [ext_resource type="AudioStream" uid="uid://d1s6l4dqgscx1" path="res://Music/sunlight_sonata.mp3" id="4_l8kwb"]
 [ext_resource type="Texture2D" uid="uid://bt7utgx57sq53" path="res://Textures/hangar.jpg" id="4_ugn2c"]
 [ext_resource type="FontFile" uid="uid://fy4o8b8cthpc" path="res://Fonts/Merich.otf" id="5_7yh45"]
@@ -15,6 +17,27 @@
 [ext_resource type="PackedScene" uid="uid://cdypel7rudyly" path="res://Objects/Bench/Bench.tscn" id="8_xldju"]
 [ext_resource type="PackedScene" uid="uid://bvlqqkn78u4jh" path="res://Objects/Piano/piano.tscn" id="10_voyn5"]
 [ext_resource type="Script" path="res://Portals/portal.gd" id="15_8tmv3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sumeq"]
+shading_mode = 0
+disable_ambient_light = true
+albedo_texture = ExtResource("2_74nqr")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2wr6c"]
+shading_mode = 0
+disable_ambient_light = true
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yx1qe"]
+shading_mode = 0
+disable_ambient_light = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sdahd"]
+albedo_texture = ExtResource("3_sbh4u")
+
+[sub_resource type="QuadMesh" id="QuadMesh_gfuc5"]
+size = Vector2(5.8, 3.28)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kxxb2"]
 size = Vector3(0.494346, 2.60144, 1.77542)
@@ -89,9 +112,6 @@ uv1_triplanar = true
 [sub_resource type="BoxShape3D" id="BoxShape3D_ikj8n"]
 size = Vector3(16.5641, 2.95459, 16.8246)
 
-[sub_resource type="QuadMesh" id="QuadMesh_gfuc5"]
-size = Vector2(5.8, 3.28)
-
 [node name="Map Debug" type="Node3D" node_paths=PackedStringArray("_player", "_corridor", "_sunlightSonata", "_titleText", "_corridorTimer", "_textAnimation", "_cantGoBackWall", "_bernie")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
 script = ExtResource("1_br7b1")
@@ -101,110 +121,106 @@ _sunlightSonata = NodePath("WhiteRoom/Piano/SunlightSonata")
 _titleText = NodePath("WhiteRoom/TitleText")
 _corridorTimer = NodePath("WhiteRoom/CorridorTimer")
 _textAnimation = NodePath("WhiteRoom/TitleText/TextAnimation")
-_cantGoBackWall = NodePath("WhiteRoom/CantGoBackWall")
+_cantGoBackWall = NodePath("WhiteRoom/CollidorEntry/CantGoBackWall")
 _bernie = NodePath("WhiteRoom/Bernie")
 
 [node name="WhiteRoom" type="Node3D" parent="."]
 
+[node name="Terrain" type="Node3D" parent="WhiteRoom"]
+
+[node name="Ground" type="CSGBox3D" parent="WhiteRoom/Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 103.845, 0.009, -46.852)
+use_collision = true
+size = Vector3(107.691, 1.0177, 96.6024)
+material = SubResource("StandardMaterial3D_sumeq")
+
+[node name="Ceiling" type="CSGBox3D" parent="WhiteRoom/Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 103.845, 32.2888, -46.852)
+use_collision = true
+size = Vector3(107.691, 1.0177, 96.6024)
+material = SubResource("StandardMaterial3D_2wr6c")
+
+[node name="Wall1" type="CSGBox3D" parent="WhiteRoom/Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 103.845, 16.141, 1.785)
+use_collision = true
+size = Vector3(107.691, 33.278, 0.66)
+material = SubResource("StandardMaterial3D_yx1qe")
+
+[node name="Wall2" type="CSGBox3D" parent="WhiteRoom/Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 103.845, 16.141, -95.486)
+use_collision = true
+size = Vector3(107.691, 33.278, 0.66)
+material = SubResource("StandardMaterial3D_yx1qe")
+
+[node name="Wall3" type="CSGBox3D" parent="WhiteRoom/Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 158.237, 15.9717, -46.8654)
+use_collision = true
+size = Vector3(1.101, 33.7064, 96.6415)
+material = SubResource("StandardMaterial3D_yx1qe")
+
+[node name="Wall4" type="CSGBox3D" parent="WhiteRoom/Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.011, 15.9717, -71.4339)
+use_collision = true
+size = Vector3(1.101, 33.706, 47.654)
+material = SubResource("StandardMaterial3D_yx1qe")
+
+[node name="Wall5" type="CSGBox3D" parent="WhiteRoom/Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.2555, 15.972, -22.3895)
+use_collision = true
+size = Vector3(0.612, 33.706, 47.657)
+material = SubResource("StandardMaterial3D_yx1qe")
+
+[node name="Wall6" type="CSGBox3D" parent="WhiteRoom/Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.011, 17.9324, -46.8636)
+use_collision = true
+size = Vector3(1.101, 29.7821, 1.924)
+material = SubResource("StandardMaterial3D_yx1qe")
+
+[node name="MirrorWall2" type="Node3D" parent="WhiteRoom/Terrain"]
+transform = Transform3D(0.559453, 9.39662e-17, 0.828862, 3.48787e-16, 1, -3.48787e-16, -0.828862, 4.84226e-16, 0.559453, 72.6534, 2.87172, -38.0747)
+
+[node name="Wall" type="CSGBox3D" parent="WhiteRoom/Terrain/MirrorWall2"]
+transform = Transform3D(1, -1.74049e-24, 6.58578e-09, 5.11991e-23, 1, -4.68128e-23, 3.42212e-09, 6.12671e-24, 1, 0, 0, 0)
+use_collision = true
+size = Vector3(7.90039, 4.78418, 1)
+material = SubResource("StandardMaterial3D_sdahd")
+
+[node name="Portal2" type="MeshInstance3D" parent="WhiteRoom/Terrain/MirrorWall2" node_paths=PackedStringArray("exit_portal")]
+transform = Transform3D(-1, 3.48787e-16, 8.74228e-08, 3.48787e-16, 1, -3.48787e-16, -8.74228e-08, -3.48787e-16, -1, -0.07, 2.08165e-12, -0.514)
+mesh = SubResource("QuadMesh_gfuc5")
+skeleton = NodePath("../../../..")
+script = ExtResource("15_8tmv3")
+vertical_viewport_resolution = 1080
+fade_out_distance_max = 20.0
+fade_out_distance_min = 20.0
+fade_out_color = Color(0, 0, 0, 1)
+exit_portal = NodePath("../../../../Portal1")
+
 [node name="CollidorEntry" type="Area3D" parent="WhiteRoom"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.9261, 0, -46.8913)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.4855, 1.79117, -46.8913)
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WhiteRoom/CollidorEntry"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.14542, 1.86084, -0.119984)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
 shape = SubResource("BoxShape3D_kxxb2")
 
-[node name="Ground" type="CSGBox3D" parent="WhiteRoom"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.9572, 0.385315, -46.9119)
-use_collision = true
-size = Vector3(7.91249, 0.22937, 1.39111)
-material = ExtResource("2_xcef7")
-
-[node name="Ground2" type="CSGBox3D" parent="WhiteRoom"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80.3968, 0.381114, -46.7825)
-use_collision = true
-size = Vector3(44.9705, 0.22937, 48.4945)
-material = ExtResource("2_xcef7")
-
-[node name="Roof2" type="CSGBox3D" parent="WhiteRoom"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80.3968, 7.9237, -46.7825)
-use_collision = true
-size = Vector3(44.9705, 1.50275, 48.4945)
-material = ExtResource("2_xcef7")
-
-[node name="Roof" type="CSGBox3D" parent="WhiteRoom"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.0279, 3.14026, -46.9152)
-use_collision = true
-size = Vector3(8.05378, 0.22937, 1.85181)
-material = ExtResource("2_xcef7")
-
-[node name="Wall1" type="CSGBox3D" parent="WhiteRoom"]
-transform = Transform3D(1, -6.97574e-16, -1.5246e-23, -1.5246e-23, -4.37114e-08, 1, -6.97574e-16, -1, -4.37114e-08, 54.027, 1.65763, -46.105)
-use_collision = true
-size = Vector3(8.05283, 0.22937, 2.77739)
-material = ExtResource("2_xcef7")
-
-[node name="Wall2" type="CSGBox3D" parent="WhiteRoom"]
-transform = Transform3D(1, -6.97574e-16, -1.5246e-23, -1.5246e-23, -4.37114e-08, 1, -6.97574e-16, -1, -4.37114e-08, 54.027, 1.65763, -47.7253)
-use_collision = true
-size = Vector3(8.05283, 0.22937, 2.77739)
-material = ExtResource("2_xcef7")
-
-[node name="Wall3" type="CSGBox3D" parent="WhiteRoom"]
-transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, -1.5246e-23, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 57.7932, 3.733, -59.335)
-use_collision = true
-size = Vector3(23.4066, 0.22937, 7.078)
-material = ExtResource("2_xcef7")
-
-[node name="CantGoBackWall" type="CSGBox3D" parent="WhiteRoom"]
-transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, -1.5246e-23, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 57.7932, 1.71887, -46.9589)
-use_collision = true
-size = Vector3(4.91805, 0.22937, 3.04974)
-material = ExtResource("2_xcef7")
-
-[node name="Wall4" type="CSGBox3D" parent="WhiteRoom"]
-transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, -1.5246e-23, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 57.8614, 3.733, -34.2754)
-use_collision = true
-size = Vector3(23.4741, 0.22937, 7.078)
-material = ExtResource("2_xcef7")
-
-[node name="Wall8" type="CSGBox3D" parent="WhiteRoom"]
-transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, -1.5246e-23, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 57.8614, 6.73233, -46.8033)
-use_collision = true
-size = Vector3(10.2576, 0.22937, 7.078)
-material = ExtResource("2_xcef7")
-
-[node name="Wall5" type="CSGBox3D" parent="WhiteRoom"]
-transform = Transform3D(1, -6.97574e-16, -1.5246e-23, -1.5246e-23, -4.37114e-08, 1, -6.97574e-16, -1, -4.37114e-08, 80.3227, 3.733, -22.6241)
-use_collision = true
-size = Vector3(45.1194, 0.22937, 7.078)
-material = ExtResource("2_xcef7")
-
-[node name="Wall6" type="CSGBox3D" parent="WhiteRoom"]
-transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, -1.5246e-23, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 102.769, 3.733, -46.7739)
-use_collision = true
-size = Vector3(48.5439, 0.22937, 7.078)
-material = ExtResource("2_xcef7")
-
-[node name="Wall7" type="CSGBox3D" parent="WhiteRoom"]
-transform = Transform3D(1, -6.97574e-16, -1.5246e-23, -1.5246e-23, -4.37114e-08, 1, -6.97574e-16, -1, -4.37114e-08, 80.2787, 3.733, -70.9544)
-use_collision = true
-size = Vector3(45.1753, 0.22937, 7.078)
+[node name="CantGoBackWall" type="CSGBox3D" parent="WhiteRoom/CollidorEntry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0215492, 0.0369263, -0.0661621)
+size = Vector3(0.105469, 2.76697, 1.53662)
 material = ExtResource("2_xcef7")
 
 [node name="Piano" parent="WhiteRoom" instance=ExtResource("10_voyn5")]
-transform = Transform3D(-0.570269, 4.85416e-16, 0.821458, 3.48787e-16, 1, -3.48787e-16, -0.821458, 8.76113e-17, -0.570269, 81.231, 0.569581, -38.6224)
+transform = Transform3D(-0.570269, 4.85416e-16, 0.821458, 3.48787e-16, 1, -3.48787e-16, -0.821458, 8.76115e-17, -0.570269, 81.231, 0.569581, -38.6224)
 
 [node name="SunlightSonata" type="AudioStreamPlayer3D" parent="WhiteRoom/Piano"]
 stream = ExtResource("4_l8kwb")
-max_distance = 40.13
 bus = &"Music"
 
 [node name="TitleText" type="Node3D" parent="WhiteRoom"]
-transform = Transform3D(-4.04251e-08, -0.380409, -0.924818, -1.66282e-08, 0.924819, -0.380409, 1, -3.48787e-16, -4.37114e-08, 92.4761, 5.03936, -43.9539)
+transform = Transform3D(-4.04251e-08, -0.380409, -0.924818, -1.66282e-08, 0.924819, -0.380409, 1, -3.48787e-16, -4.37114e-08, 92.4761, 15.169, -43.9539)
 
 [node name="Seaside" type="Label3D" parent="WhiteRoom/TitleText"]
-transform = Transform3D(1, -7.71413e-16, 3.55271e-15, -8.92486e-16, 1, -1.36313e-08, -4.50003e-15, 9.31109e-09, 1, 0, 0, 0)
+transform = Transform3D(1, 1.29746e-08, -1.96999e-09, -1.29746e-08, 0.954932, -0.296825, -1.96999e-09, 0.296825, 0.954932, 0, 0, 0)
 modulate = Color(0, 0, 0, 0)
 outline_modulate = Color(1, 1, 1, 1)
 text = "SEASIDE"
@@ -214,7 +230,7 @@ outline_size = 0
 uppercase = true
 
 [node name="Rendezvous" type="Label3D" parent="WhiteRoom/TitleText"]
-transform = Transform3D(1, -7.71413e-16, 3.55271e-15, -8.92486e-16, 1, -1.36313e-08, -4.50003e-15, 9.31109e-09, 1, 0, -2.25547, 0.92775)
+transform = Transform3D(1, 9.51226e-09, -1.04756e-09, -9.51226e-09, 0.976034, -0.217615, -1.04757e-09, 0.217615, 0.976035, 0, -3.52388, -0.568985)
 modulate = Color(0, 0, 0, 0)
 outline_modulate = Color(1, 1, 1, 1)
 text = "RENDEZVOUS"
@@ -285,32 +301,33 @@ size = Vector3(100, 1, 100)
 material = SubResource("StandardMaterial3D_qrgic")
 
 [node name="Muret" type="CSGBox3D" parent="Terrain"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 5.55207, 49.09)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 24.376, 49.09)
 use_collision = true
-size = Vector3(100, 10.1241, 2)
+size = Vector3(100, 47.693, 2)
 material = ExtResource("5_opkan")
 
 [node name="Muret2" type="CSGBox3D" parent="Terrain"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 5.552, -49)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 24.3756, -49)
 use_collision = true
-size = Vector3(100, 10.124, 2)
+size = Vector3(100, 47.693, 2)
 material = ExtResource("5_opkan")
 
 [node name="Muret3" type="CSGBox3D" parent="Terrain"]
-transform = Transform3D(-4.37114e-08, 3.48787e-16, 1, 3.48787e-16, 1, -3.48787e-16, -1, 3.48787e-16, -4.37114e-08, 49.001, 5.552, -0.936)
+transform = Transform3D(-4.37114e-08, 3.48787e-16, 1, 3.48787e-16, 1, -3.48787e-16, -1, 3.48787e-16, -4.37114e-08, 49.001, 24.3367, -0.936)
 use_collision = true
-size = Vector3(98.07, 10.124, 2)
+size = Vector3(98.07, 47.6933, 2)
 material = ExtResource("5_opkan")
 
 [node name="Corridor" type="CSGBox3D" parent="Terrain/Muret3"]
-transform = Transform3D(-4.37114e-08, 3.48787e-16, -1, 3.48787e-16, 1, 3.48787e-16, 1, -3.48787e-16, -4.37114e-08, 45.9761, -3.78469, 0.00628662)
+transform = Transform3D(-4.37114e-08, 3.48787e-16, -1, 3.48787e-16, 1, 3.48787e-16, 1, -3.48787e-16, -4.37114e-08, 45.9761, -22.5608, 0.00628662)
 operation = 2
 size = Vector3(2.02102, 2.55231, 1.38904)
+material = ExtResource("2_xcef7")
 
 [node name="Muret4" type="CSGBox3D" parent="Terrain"]
-transform = Transform3D(-4.37114e-08, 3.48787e-16, 1, 3.48787e-16, 1, -3.48787e-16, -1, 3.48787e-16, -4.37114e-08, -51.028, 5.552, -0.771)
+transform = Transform3D(-4.37114e-08, 3.48787e-16, 1, 3.48787e-16, 1, -3.48787e-16, -1, 3.48787e-16, -4.37114e-08, -51.028, 24.376, -0.771)
 use_collision = true
-size = Vector3(98.289, 10.124, 2)
+size = Vector3(98.289, 47.693, 2)
 material = ExtResource("5_opkan")
 
 [node name="CenterOfMap" type="Area3D" parent="Terrain"]
@@ -321,7 +338,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.16737, 2.03741, -0.0940857)
 shape = SubResource("BoxShape3D_ikj8n")
 
 [node name="SpotLight2" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.974067, -0.162917, 0.15701, 0.0179929, 0.635962, 0.771511, -0.225545, 0.754328, -0.616538, 0, 54.1733, -42.1766)
+transform = Transform3D(-0.974067, -0.162917, 0.157011, 0.0179929, 0.635962, 0.771511, -0.225545, 0.754328, -0.616538, 0, 50.8434, -42.1766)
 light_color = Color(1, 0.929412, 1, 1)
 light_energy = 0.193
 
@@ -329,10 +346,10 @@ light_energy = 0.193
 transform = Transform3D(0.679275, -4.92891e-16, -0.733884, 3.48787e-16, 1, -3.48787e-16, 0.733884, -1.90469e-17, 0.679275, 80.8396, 0.5, -69.0501)
 
 [node name="Statue" parent="StatueGroup" instance=ExtResource("8_uuapg")]
-transform = Transform3D(1, 4.02213e-24, 3.31618e-15, 4.02213e-24, 1, -1.13609e-23, -3.31618e-15, 1.13609e-23, 1, 0, 0, 0)
+transform = Transform3D(1, 9.49444e-23, 1.86196e-09, -9.49444e-23, 1, -9.14796e-23, -1.86196e-09, 9.14795e-23, 1, 0, 0, 0)
 
 [node name="OmniLight3D" type="SpotLight3D" parent="StatueGroup"]
-transform = Transform3D(1, -5.16053e-08, -1.68562e-08, 5.16053e-08, 0.807187, 0.590296, -1.68563e-08, -0.590296, 0.807187, 0, 5.26923, 6.23325)
+transform = Transform3D(1, -4.90619e-08, -2.03342e-08, 5.16053e-08, 0.807187, 0.590296, -1.25476e-08, -0.590296, 0.807187, 4.29153e-06, 5.26923, 6.23323)
 light_color = Color(0.999993, 0.825047, 0.818928, 1)
 light_energy = 3.952
 spot_range = 13.0097
@@ -344,13 +361,6 @@ mesh = SubResource("QuadMesh_gfuc5")
 script = ExtResource("15_8tmv3")
 vertical_viewport_resolution = 1080
 
-[node name="Portal2" type="MeshInstance3D" parent="." node_paths=PackedStringArray("exit_portal")]
-transform = Transform3D(-1, -8.74228e-08, -1.5246e-23, -3.82137e-15, 4.37114e-08, 1, -8.74228e-08, 1, -4.37114e-08, 73.645, 0.5, -38.863)
-mesh = SubResource("QuadMesh_gfuc5")
-script = ExtResource("15_8tmv3")
-vertical_viewport_resolution = 1080
-exit_portal = NodePath("../Portal1")
-
-[connection signal="body_entered" from="WhiteRoom/CollidorEntry" to="." method="_CorridorEnteredSignal"]
+[connection signal="body_exited" from="WhiteRoom/CollidorEntry" to="." method="_CorridorEnteredSignal"]
 [connection signal="timeout" from="WhiteRoom/CorridorTimer" to="." method="_CorridorTimerTimeout"]
 [connection signal="body_entered" from="Terrain/CenterOfMap" to="." method="_CenterOfMapEnteredSignal"]

@@ -67,6 +67,19 @@ public partial class Player : CharacterBody3D
 		if (@event.IsActionReleased("caps")){
 			_currentSpeed = Speed;
 		}
+		if (@event.IsActionPressed("centerOfMap")){
+			Teleport(new Vector3(0, 1, 0));
+		}
+		if (@event.IsActionPressed("corridor")){
+			Teleport(new Vector3(30.179f, 0.929f, -43.619f));
+		}
 	}
+
+	    private void Teleport(Vector3 newPosition)
+    {
+        Transform3D newTransform = Transform3D.Identity;
+        newTransform.Origin = newPosition;
+        GlobalTransform = newTransform;
+    }
 	
 }
