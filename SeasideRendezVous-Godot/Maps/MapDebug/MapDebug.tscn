@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bm0de4q0b34sv"]
+[gd_scene load_steps=36 format=3 uid="uid://bm0de4q0b34sv"]
 
 [ext_resource type="Script" path="res://Maps/MapDebug/MapDebug.cs" id="1_br7b1"]
 [ext_resource type="Texture2D" uid="uid://biyg4pwgovo87" path="res://Textures/absoluteWhiteGround.png" id="2_74nqr"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://cdypel7rudyly" path="res://Objects/Bench/Bench.tscn" id="8_xldju"]
 [ext_resource type="PackedScene" uid="uid://bvlqqkn78u4jh" path="res://Objects/Piano/piano.tscn" id="10_voyn5"]
 [ext_resource type="Script" path="res://Portals/portal.gd" id="15_8tmv3"]
+[ext_resource type="Texture2D" uid="uid://cd6fnn0k7rhgi" path="res://Skyboxes/Deep Dusk Equirect.png" id="17_1ad0y"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sumeq"]
 shading_mode = 0
@@ -407,6 +408,20 @@ size = Vector3(16.5641, 2.95459, 16.8246)
 [sub_resource type="QuadMesh" id="QuadMesh_gfuc5"]
 size = Vector2(5.8, 3.28)
 
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_witn4"]
+panorama = ExtResource("17_1ad0y")
+filter = false
+
+[sub_resource type="Sky" id="Sky_phj0p"]
+sky_material = SubResource("PanoramaSkyMaterial_witn4")
+process_mode = 1
+
+[sub_resource type="Environment" id="Environment_k0ut2"]
+background_mode = 2
+sky = SubResource("Sky_phj0p")
+ambient_light_source = 3
+ambient_light_color = Color(1, 1, 1, 1)
+
 [node name="Map Debug" type="Node3D" node_paths=PackedStringArray("_player", "_corridor", "_sunlightSonata", "_titleText", "_corridorTimer", "_textAnimation", "_cantGoBackWall", "_bernie", "_terrain", "_lsdModeTimer", "_lsdModeAnimation", "_endOfGameTimer")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
 script = ExtResource("1_br7b1")
@@ -515,7 +530,6 @@ material = ExtResource("2_xcef7")
 transform = Transform3D(-0.570269, 4.85416e-16, 0.821458, 3.48787e-16, 1, -3.48787e-16, -0.821458, 8.76115e-17, -0.570269, 81.231, 0.569581, -38.6224)
 
 [node name="PianoConcerto" type="AudioStreamPlayer" parent="WhiteRoom/Piano"]
-process_mode = 3
 stream = ExtResource("6_2ojf3")
 bus = &"Music"
 
@@ -651,9 +665,9 @@ size = Vector3(2.02102, 2.55231, 1.38904)
 material = ExtResource("2_xcef7")
 
 [node name="Muret4" type="CSGBox3D" parent="Terrain"]
-transform = Transform3D(-4.37114e-08, 3.48787e-16, 1, 3.48787e-16, 1, -3.48787e-16, -1, 3.48787e-16, -4.37114e-08, -51.028, 24.376, -0.771)
+transform = Transform3D(-4.37114e-08, 3.48787e-16, 1, 3.48787e-16, 1, -3.48787e-16, -1, 3.48787e-16, -4.37114e-08, -50.8759, 24.376, -0.771)
 use_collision = true
-size = Vector3(98.289, 47.693, 2)
+size = Vector3(98.289, 47.693, 2.3042)
 material = ExtResource("5_opkan")
 
 [node name="CenterOfMap" type="Area3D" parent="Terrain"]
@@ -686,6 +700,9 @@ transform = Transform3D(-4.37114e-08, 3.48787e-16, 1, 3.48787e-16, 1, -3.48787e-
 mesh = SubResource("QuadMesh_gfuc5")
 script = ExtResource("15_8tmv3")
 vertical_viewport_resolution = 1080
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_k0ut2")
 
 [connection signal="timeout" from="WhiteRoom/EndOfGame" to="." method="_EndOfGameTimeout"]
 [connection signal="body_exited" from="WhiteRoom/CollidorEntry" to="." method="_CorridorEnteredSignal"]

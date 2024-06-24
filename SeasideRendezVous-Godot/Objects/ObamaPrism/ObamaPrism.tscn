@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqbuy262sxmss"]
+
+[ext_resource type="ArrayMesh" uid="uid://ch0nno52qp8" path="res://Models/ObamaPrism/ObamaPrism.tres" id="1_3cyg0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6q44v"]
+size = Vector3(2.55701, 1.99809, 2.56287)
+
+[node name="ObamaPrism" type="RigidBody3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-21.27, -3.21168e-06, -1.40387e-13, 0, -9.29741e-07, 21.27, -3.21168e-06, 21.27, 9.29741e-07, 2.08165e-12, 22.1249, 2.08165e-12)
+mesh = ExtResource("1_3cyg0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(21.27, 0, 0, 0, 21.27, 0, 0, 0, 21.27, 0.00213623, 22.1037, -0.000793457)
+shape = SubResource("BoxShape3D_6q44v")

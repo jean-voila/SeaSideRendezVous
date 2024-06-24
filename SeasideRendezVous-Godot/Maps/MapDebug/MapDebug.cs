@@ -30,6 +30,7 @@ public partial class MapDebug : Node3D
 		_cantGoBackWall.Hide();
 		_cantGoBackWall.UseCollision = false;
 		_bernie.Hide();
+		_bernie.CollisionLayer = 0;
 	}
 
 	public override void _Process(double delta)
@@ -57,6 +58,7 @@ public partial class MapDebug : Node3D
 		_titleText.Show();
 		_textAnimation.Play("fade_in");
 		_bernie.Show();
+		_bernie.CollisionLayer = 1;
 		
 	}
 

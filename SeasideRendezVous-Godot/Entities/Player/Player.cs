@@ -14,6 +14,7 @@ public partial class Player : CharacterBody3D
 	[Export] private AudioStreamPlayer3D _footstepsSFX;
 
 	[Export] private Control _titleScreen;
+	[Export] private Control _pauseMenu;
 
 	private float _gravity = ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle();
 	private Vector3 _position;
@@ -28,7 +29,7 @@ public partial class Player : CharacterBody3D
 		Input.MouseMode = Input.MouseModeEnum.Captured;
 		LowGravitySignal+=LowGravity;
 		_titleScreen.Hide();
-		EndOfGameSignal+=_EndOfGame;
+		EndOfGameSignal+=EndOfGame;
 	}
 	
 	
@@ -100,7 +101,8 @@ public partial class Player : CharacterBody3D
 		_runEnabled = !lowGravity;
 	}
 
-	private void _EndOfGame(){
+	private void EndOfGame(){
+		_pauseMenu.EmitSignal("CanPauseSignal", false);
 		_titleScreen.Show();
 	}
 	

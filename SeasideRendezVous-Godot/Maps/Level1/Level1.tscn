@@ -1,0 +1,55 @@
+[gd_scene load_steps=11 format=3 uid="uid://cs7l00wbbud3v"]
+
+[ext_resource type="Texture2D" uid="uid://isqley5w2fi4" path="res://Models/Pavers/pavers.jpg" id="1_1xedy"]
+[ext_resource type="PackedScene" uid="uid://bsb3joln662tm" path="res://Entities/Player/Player.tscn" id="2_x4t1a"]
+[ext_resource type="Texture2D" uid="uid://cyi0ewpddyefw" path="res://Skyboxes/Cold Sunset Equirect.png" id="3_n3qmh"]
+[ext_resource type="AudioStream" uid="uid://bcqsl0ejgw2j8" path="res://Music/Sirius.mp3" id="4_l6dx5"]
+[ext_resource type="PackedScene" uid="uid://cqbuy262sxmss" path="res://Objects/ObamaPrism/ObamaPrism.tscn" id="5_4n18i"]
+[ext_resource type="PackedScene" uid="uid://bj7s7t52tcy8n" path="res://Interfaces/Fade_In_Animation.tscn" id="6_5yg5i"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_08scg"]
+albedo_texture = ExtResource("1_1xedy")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_0vo3e"]
+panorama = ExtResource("3_n3qmh")
+
+[sub_resource type="Sky" id="Sky_1dhx1"]
+sky_material = SubResource("PanoramaSkyMaterial_0vo3e")
+
+[sub_resource type="Environment" id="Environment_8gpng"]
+background_mode = 2
+sky = SubResource("Sky_1dhx1")
+ambient_light_source = 3
+ambient_light_color = Color(1, 1, 1, 1)
+
+[node name="Level1" type="Node3D"]
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.498842, 0.0340077, 0, 0.0680153, 0.997684, -0.5, 0.86402, -0.058903, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Terrain" type="Node3D" parent="."]
+
+[node name="Ground" type="CSGBox3D" parent="Terrain"]
+use_collision = true
+size = Vector3(500, 1, 500)
+material = SubResource("StandardMaterial3D_08scg")
+
+[node name="Player" parent="." instance=ExtResource("2_x4t1a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 3.8, 2.08165e-12)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_8gpng")
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_l6dx5")
+autoplay = true
+bus = &"Music"
+
+[node name="ObamaPrism" parent="." instance=ExtResource("5_4n18i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.814, 7.96823, -0.519)
+gravity_scale = 1.66533e-16
+
+[node name="Control" parent="." instance=ExtResource("6_5yg5i")]

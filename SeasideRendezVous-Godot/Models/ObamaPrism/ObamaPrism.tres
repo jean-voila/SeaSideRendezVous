@@ -1,0 +1,41 @@
+[gd_resource type="ArrayMesh" load_steps=4 format=3 uid="uid://ch0nno52qp8"]
+
+[ext_resource type="Texture2D" uid="uid://dyngt2q8nen5p" path="res://Models/ObamaPrism/obama_prism_0.jpg" id="1_sqsok"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q4ng1"]
+resource_name = "Material.001"
+cull_mode = 2
+albedo_texture = ExtResource("1_sqsok")
+roughness = 0.6
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_qlhkm"]
+_surfaces = [{
+"aabb": AABB(-1.28177, -1.28724, -1.01883, 2.56901, 2.56901, 2.01179),
+"format": 34896613377,
+"index_count": 18,
+"index_data": PackedByteArray(0, 0, 2, 0, 1, 0, 2, 0, 3, 0, 1, 0, 3, 0, 4, 0, 1, 0, 4, 0, 0, 0, 1, 0, 2, 0, 4, 0, 3, 0, 2, 0, 0, 0, 4, 0),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 5,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 255, 127, 255, 127, 255, 255, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[resource]
+resource_name = "Sketchfab_Scene_Object_0"
+_surfaces = [{
+"aabb": AABB(-1.28177, -1.28724, -1.01883, 2.56901, 2.56901, 2.01179),
+"attribute_data": PackedByteArray(58, 50, 251, 129, 23, 12, 162, 18, 59, 129, 121, 57, 221, 124, 252, 208, 101, 9, 102, 242, 23, 50, 146, 131, 89, 208, 194, 136, 191, 244, 205, 247, 66, 130, 47, 208, 204, 132, 35, 58, 50, 249, 148, 24, 152, 207, 123, 133, 153, 51, 102, 131, 153, 131, 79, 60, 50, 207, 70, 135, 50, 129, 128, 207),
+"format": 34896613399,
+"index_count": 18,
+"index_data": PackedByteArray(0, 0, 2, 0, 1, 0, 3, 0, 5, 0, 4, 0, 6, 0, 8, 0, 7, 0, 9, 0, 11, 0, 10, 0, 12, 0, 14, 0, 13, 0, 12, 0, 15, 0, 14, 0),
+"material": SubResource("StandardMaterial3D_q4ng1"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 0, 0, 200, 29, 255, 127, 255, 127, 255, 255, 200, 29, 0, 0, 255, 255, 0, 0, 200, 29, 0, 0, 255, 255, 0, 0, 215, 27, 255, 127, 255, 127, 255, 255, 215, 27, 255, 255, 255, 255, 0, 0, 215, 27, 255, 255, 255, 255, 0, 0, 25, 30, 255, 127, 255, 127, 255, 255, 25, 30, 255, 255, 0, 0, 0, 0, 25, 30, 255, 255, 0, 0, 0, 0, 149, 27, 255, 127, 255, 127, 255, 255, 149, 27, 0, 0, 0, 0, 0, 0, 149, 27, 0, 0, 255, 255, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 136, 238, 222, 216, 136, 238, 222, 216, 136, 238, 222, 216, 120, 216, 87, 16, 120, 216, 87, 16, 120, 216, 87, 16, 165, 17, 16, 39, 165, 17, 16, 39, 165, 17, 16, 39, 148, 39, 205, 239, 148, 39, 205, 239, 148, 39, 205, 239, 127, 219, 128, 91, 129, 219, 130, 91, 127, 219, 128, 91, 125, 219, 126, 91)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_qlhkm")

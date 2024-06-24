@@ -1,0 +1,64 @@
+[gd_scene load_steps=5 format=3 uid="uid://bj7s7t52tcy8n"]
+
+[ext_resource type="Script" path="res://Interfaces/Fade_In_Animation.cs" id="1_i4aqs"]
+
+[sub_resource type="Animation" id="Animation_exhcl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Opacity:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_v64ic"]
+resource_name = "fade_in"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Opacity:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ekpsy"]
+_data = {
+"RESET": SubResource("Animation_exhcl"),
+"fade_in": SubResource("Animation_v64ic")
+}
+
+[node name="Control" type="Control" node_paths=PackedStringArray("_introAnimation")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i4aqs")
+_introAnimation = NodePath("Fade_in")
+
+[node name="Opacity" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Fade_in" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ekpsy")
+}
