@@ -30,15 +30,15 @@ ambient_light_color = Color(1, 1, 1, 1)
 transform = Transform3D(-0.866025, -0.498842, 0.0340077, 0, 0.0680153, 0.997684, -0.5, 0.86402, -0.058903, 0, 0, 0)
 shadow_enabled = true
 
+[node name="Player" parent="." instance=ExtResource("2_x4t1a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 3.8, 2.08165e-12)
+
 [node name="Terrain" type="Node3D" parent="."]
 
 [node name="Ground" type="CSGBox3D" parent="Terrain"]
 use_collision = true
 size = Vector3(500, 1, 500)
 material = SubResource("StandardMaterial3D_08scg")
-
-[node name="Player" parent="." instance=ExtResource("2_x4t1a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 3.8, 2.08165e-12)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_8gpng")
@@ -52,4 +52,4 @@ bus = &"Music"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.814, 7.96823, -0.519)
 gravity_scale = 1.66533e-16
 
-[node name="Control" parent="." instance=ExtResource("6_5yg5i")]
+[node name="Fade_In" parent="." instance=ExtResource("6_5yg5i")]

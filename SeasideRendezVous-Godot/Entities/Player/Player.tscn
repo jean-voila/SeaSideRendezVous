@@ -1,15 +1,20 @@
-[gd_scene load_steps=7 format=3 uid="uid://bsb3joln662tm"]
+[gd_scene load_steps=10 format=3 uid="uid://bsb3joln662tm"]
 
 [ext_resource type="Script" path="res://Entities/Player/Player.cs" id="1_vvxf0"]
 [ext_resource type="AudioStream" uid="uid://b4e8u50jhmbiq" path="res://SoundEffects/foosteps/FootSteps.tres" id="2_35so3"]
 [ext_resource type="PackedScene" uid="uid://c37fmnptvpf6f" path="res://Interfaces/PauseMenu/PauseMenu.tscn" id="2_fe2hj"]
 [ext_resource type="PackedScene" uid="uid://cs3athncjndht" path="res://Interfaces/IntroEnding/IntroEnding.tscn" id="4_2pwpg"]
+[ext_resource type="PackedScene" uid="uid://bfy1pf8rk24ja" path="res://Interfaces/CinematicMode/CinematicMode.tscn" id="5_nt28s"]
+[ext_resource type="Shader" path="res://Interfaces/CinematicMode/CinematicMode.gdshader" id="6_8yyit"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ongep"]
 height = 1.5
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ex7mj"]
 height = 1.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3uc3s"]
+shader = ExtResource("6_8yyit")
 
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("_head", "_footstepsSFX", "_titleScreen", "_pauseMenu")]
 collision_layer = 2
@@ -27,10 +32,23 @@ volume_db = -36.717
 pitch_scale = 0.58
 bus = &"SFX"
 
-[node name="PauseMenu" parent="." instance=ExtResource("2_fe2hj")]
-
 [node name="TitleScreen" parent="." instance=ExtResource("4_2pwpg")]
 visible = false
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.29383, 0)
+
+[node name="Camera" type="Camera3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+current = true
+fov = 37.8493
+
+[node name="Lanterne" type="SpotLight3D" parent="Head/Camera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+light_energy = 3.244
+light_indirect_energy = 3.628
+spot_range = 4.83834
+spot_angle = 39.7117
 
 [node name="Collision" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_ongep")
@@ -39,17 +57,16 @@ shape = SubResource("CapsuleShape3D_ongep")
 visible = false
 mesh = SubResource("CapsuleMesh_ex7mj")
 
-[node name="Head" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.29383, 0)
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_3uc3s")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
 
-[node name="Camera" type="Camera3D" parent="Head"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
-current = true
-fov = 62.3
+[node name="CinematicMode" parent="." instance=ExtResource("5_nt28s")]
 
-[node name="Lanterne" type="SpotLight3D" parent="Head/Camera"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
-light_energy = 3.244
-light_indirect_energy = 3.628
-spot_range = 4.83834
-spot_angle = 39.7117
+[node name="PauseMenu" parent="." instance=ExtResource("2_fe2hj")]

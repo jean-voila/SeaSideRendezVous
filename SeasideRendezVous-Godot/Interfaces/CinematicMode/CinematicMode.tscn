@@ -1,0 +1,58 @@
+[gd_scene load_steps=4 format=3 uid="uid://bfy1pf8rk24ja"]
+
+[ext_resource type="Shader" path="res://Interfaces/CinematicMode/CinematicMode.gdshader" id="1_ih5r7"]
+[ext_resource type="FontFile" uid="uid://ibe4h4xijgdg" path="res://Fonts/FuturaBold.ttf" id="1_ppid4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pagqy"]
+shader = ExtResource("1_ih5r7")
+
+[node name="CinematicMode" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_pagqy")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="BlackBar1" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 403.0
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="BlackBar2" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -403.0
+grow_horizontal = 0
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.968627, 0.913725, 0.352941, 1)
+theme_override_fonts/font = ExtResource("1_ppid4")
+theme_override_font_sizes/font_size = 97
+text = "NIVEAU SECOND"
+horizontal_alignment = 1
+vertical_alignment = 1

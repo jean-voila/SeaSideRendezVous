@@ -8,7 +8,7 @@ public partial class Player : CharacterBody3D
 	[Export] private Node3D _head;
 	[Export] private float MouseSensitivity = 0.002f;
 	[Export] private const float Speed = 5.4f;
-	
+
 	[Export] private const float JumpVelocity = 4f;
 	[Export] private float Acceleration = 10.0f;
 	[Export] private AudioStreamPlayer3D _footstepsSFX;
@@ -18,7 +18,7 @@ public partial class Player : CharacterBody3D
 
 	private float _gravity = ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle();
 	private Vector3 _position;
-	
+
 
 	private float _currentSpeed = Speed;
 	private float _currentJumpVelocity = JumpVelocity;
@@ -30,13 +30,14 @@ public partial class Player : CharacterBody3D
 		LowGravitySignal+=LowGravity;
 		_titleScreen.Hide();
 		EndOfGameSignal+=EndOfGame;
+
 	}
-	
-	
+
+
 	public override void _PhysicsProcess(double delta)
 	{
 		_position = GlobalTransform.Origin;
-		
+
 		if (!IsOnFloor())
 			Velocity = new Vector3(Velocity.X, Velocity.Y - _gravity * (float)delta, Velocity.Z);
 
@@ -58,7 +59,8 @@ public partial class Player : CharacterBody3D
 		Velocity = new Vector3(horizontalVelocity.X, Velocity.Y, horizontalVelocity.Z);
 		MoveAndSlide();
 	}
-	
+
+
 	public override void _Input(InputEvent @event)
 	{
 		if (@event is InputEventMouseMotion mouseInput)
@@ -68,9 +70,10 @@ public partial class Player : CharacterBody3D
 
 			var currentRotation = _head.RotationDegrees;
 			currentRotation.X = Mathf.Clamp(currentRotation.X, -90.0f, 90.0f);
-			
+
 			_head.RotationDegrees = currentRotation;
 		}
+
 
 		if (@event.IsActionPressed("caps") && _runEnabled){
 			_currentSpeed = Speed * 1.5f;
@@ -105,5 +108,5 @@ public partial class Player : CharacterBody3D
 		_pauseMenu.EmitSignal("CanPauseSignal", false);
 		_titleScreen.Show();
 	}
-	
+
 }
